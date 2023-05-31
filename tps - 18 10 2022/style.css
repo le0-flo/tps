@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+    --bg: #3C362A;
+    --bg2: #1C2826;
+    --primary: #C5DCA0;
+    --accent: #802392;
+    --text: white;
+    --text2: #F5F2B8;
+}
+
+* {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background: var(--bg);
+}
+
+/* Header */
+
+.header {
+    width: 100vw;
+    height: 40vh;
+    background: var(--primary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header > p {
+    color: var(--text);
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.header > p > .classe {
+    color: var(--text2);
+    font-weight: 700;
+}
+
+.header > p > .data {
+    color: var(--text2);
+    font-size: 20px;
+}
+
+/* Input */
+
+.input-form {
+    width: 100vw;
+    background: var(--bg);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Clear Button */
+
+.clear {
+    width: 50px;
+    height: 50px;
+
+    border: 0;
+    border-radius: 10px;
+    background: red;
+    position: absolute;
+    top: 41vh;
+    right: 1vh;
+    color: var(--text);
+    transition: 200ms;
+}
+
+.clear:hover {
+    background: var(--bg2);
+    scale: 110%;
+    transition: 200ms;
+}
+
+/* Form */
+
+.input-form > form {
+    width: 100vw;
+    height: 30vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-form input {
+    margin: 0 20px;
+    width: 20vw;
+    height: 5vh;
+
+    color: var(--text);
+
+    background: var(--bg);
+    border: 0 solid var(--accent);
+    border-radius: 10px;
+    transition: 100ms;
+    text-align: center;
+}
+
+.input-form input:hover {
+    scale: 107%;
+    transition: 200ms;
+}
+
+.input-form input:focus {
+    outline: 0;
+    border: 3px solid var(--accent);
+    border-radius: 10px;
+    background: var(--bg2);
+    transition: 200ms;
+}
+
+/* Display */
+
+#display {
+    width: 100vw;
+    padding: 5vh 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.verbale {
+    width: 40vw;
+    height: 10vh;
+    margin: 10px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--bg2);
+    color: var(--text);
+    border-radius: 20px;
+}
+
+.verbale > input {
+    margin: 0 20px;
+    height: 5vh;
+
+    text-align: center;
+    border: 0;
+    border-radius: 5px;
+    background: var(--bg);
+    color: var(--text2);
+}
+
+.verbale > input:focus {
+    outline: 0;
+    scale: 110%;
+}
+
+/* Save */
+
+.save {
+    width: 100vw;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#send {
+    width: 20vw;
+    height: 5vh;
+
+    background: var(--bg2);
+    color: var(--text);
+
+    display: none;
+    border: 0;
+    border-radius: 10px;
+    transition: 200ms;
+}
+
+#send:hover {
+    scale: 110%;
+    transition: 200ms;
+}
+
+.show {
+    display: block !important;
+}

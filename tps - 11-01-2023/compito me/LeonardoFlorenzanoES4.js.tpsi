@@ -1,0 +1,16 @@
+document.addEventListener('DOMContentLoaded',main)
+
+function main() {
+
+  const stringa = '{"nominativi":[{"cognome":"Rossi","nome":"Mario", "eta":"27","indirizzo":{"via":"Roma", "civico":"5","citta":"Bologna"}},{"cognome":"Bianchi","nome":"Anna","eta":"18","indirizzo":{"via": "Italia","civico":"12","citta":"Mantova"}},{"cognome":"verdi","nome":"Teresa","eta":"40","indirizzo":{"via": "Cavour","civico":"3","citta":"Roncobilaccio"}},{"cognome":"Ronaldo","nome":"Cristiano","eta":"40","indirizzo":{"via": "Cavour","civico":"4","citta":"Bologna"}},{"cognome":"neri","nome":"Gianni","eta":"42","indirizzo":{"via": "Garibaldi", "civico":"25","citta":"Monzuno"}}]}';  
+  let parsed_data = JSON.parse(stringa);
+
+  for (let i=0; i<parsed_data['nominativi']['length']; i++) {
+
+    if (parsed_data['nominativi'][i]['cognome'] == "Bianchi" && parsed_data['nominativi'][i]['nome'] == "Anna") {
+      console.log("età: " + parsed_data['nominativi'][i]['eta']);
+    }
+
+  }
+
+}

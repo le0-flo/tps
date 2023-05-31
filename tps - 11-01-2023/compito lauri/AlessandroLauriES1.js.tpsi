@@ -1,0 +1,43 @@
+document.addEventListener('DOMContentLoaded',main)
+
+const url = "https://www.movebank.org/movebank/service/public/json?&study_id=2911040&individual_local_identifiers=4262-84830876&sensor_type=gps&event_reduction_profile=EURING_02";
+
+
+function handle(dati) {
+    const main = document.getElementById("risultati");
+
+    var l = dati['individuals'][0]['locations']['length'];
+
+    const id_sensore = document.createElement("h1");
+    id_sensore.innerText = "ID sensore: " + dati['individuals'][0]['sensor_id'];
+    main.appendChild(id_sensore);
+
+    const title = document.createElement("h3");
+    title.innerText = "Timestamps:";
+    main.appendChild(title);
+
+    const unordered_list = document.createElement("ul");
+
+    for (var i=0; i<l; i++) {
+
+        const list_index = document.createElement("li");
+        
+        const data = document.createElement("p");
+        data.innerText = Date(dati['individuals'][0]['locations'][i]['timestamp']);
+        list_index.appendChild(data);
+        
+        unordered_list.appendChild(list_index);
+    }
+
+    main.appendChild(unordered_list);
+}
+
+function main() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        var dati = JSON.parse(this.responseText); 
+        handle(dati);
+    };
+    xhttp.open("GET", url);
+    xhttp.send();
+}

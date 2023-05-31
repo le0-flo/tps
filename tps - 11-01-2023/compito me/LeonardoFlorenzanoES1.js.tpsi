@@ -1,0 +1,40 @@
+document.addEventListener('DOMContentLoaded',main)
+
+function main() {
+  const richiesta = new XMLHttpRequest();
+  richiesta.onload = function () {
+    let risposta = JSON.parse(this.responseText); 
+    gestisci_risposta(risposta);
+  };
+  richiesta.open("GET", "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=9EuGp3QBvWVnJuMvddlxUgWnL8znVnHN");
+  richiesta.send();
+}
+
+function gestisci_risposta(risposta) {
+  
+  const risultati = document.getElementById("risultati");
+
+  let l = risposta['results']['length'];
+
+  for (let i=0; i<l; i++) {
+
+    const div = document.createElement("div");
+    
+    const titolo = document.createElement("h1");
+    titolo.innerText = risposta['results'][i]['title'];
+    div.appendChild(titolo);
+    
+    const link = document.createElement("a");
+    link.href = risposta['results'][i]['url']
+    link.innerText = "Premi per l'articolo completo";
+    div.appendChild(link);
+    
+    try {
+      const img = document.createElement("img");
+      img.src = risposta['results'][i]['media'][0]['media-metadata'][0]['url'];
+      div.appendChild(img);
+    } catch {}
+    
+    risultati.appendChild(div);
+  }
+}

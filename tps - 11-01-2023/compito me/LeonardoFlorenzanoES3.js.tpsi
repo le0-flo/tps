@@ -1,0 +1,13 @@
+document.addEventListener('DOMContentLoaded',main)
+
+const struttura = '{"transazioni":[{"transaction-id":"AAAA00001","id-esercente":"AAAA00001","nome":"Gianluca","cognome":"Rossi","numero-carta":"5267897269508897","data":"28/02/2021","stato-rimborso":"no","importo":"1000"},{"transaction-id":"AAAA00002","id-esercente":"AAAA00069","nome":"Olivier","cognome":"Sills","numero-carta":"5267891182072438","data":"05/06/2021","stato-rimborso":"si","importo":"250"}]}';
+
+function main() {
+
+    let n = 1;
+    let parsed_data = JSON.parse(struttura);
+
+    console.log("Data: " + parsed_data['transazioni'][n]['data']);
+    console.log("Importo: " + parsed_data['transazioni'][n]['importo'] + "€");
+
+}

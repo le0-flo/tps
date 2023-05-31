@@ -1,0 +1,48 @@
+document.addEventListener('DOMContentLoaded',main)
+
+function main() {
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        var response = JSON.parse(this.responseText); 
+        handle_response(response);
+    };
+    xhttp.open("GET", "https://opendata.comune.bologna.it/api/records/1.0/search/?dataset=sensori-clima-bologna&q=");
+    xhttp.send();
+
+}
+
+function handle_response(response) {
+
+    const risultati = document.getElementById("risultati");
+
+    console.log(response);
+
+    var titletext = response['parameters']['dataset'];
+    const titolo = document.createElement('h1');
+    titolo.innerText = titletext;
+    risultati.appendChild(titolo);
+
+    const lista = document.createElement('ul');
+
+    var l = response['records']['length'];
+    for (var i=0; i<l; i++) {
+        const list_item = document.createElement('li');
+
+        const id = document.createElement('h3');
+        id.innerText = "Record id: " + response['records'][i]['recordid'];
+        list_item.appendChild(id);
+
+        const data = document.createElement('h4');
+        data.innerText = response['records'][i]['fields']['identifier'] + ": " + response['records'][i]['fields']['avgvalue'];
+        list_item.appendChild(data);
+
+        const timestamp = document.createElement('h4');
+        timestamp.innerText = "Record timestamp: " + response['records'][i]['record_timestamp'];
+        list_item.appendChild(timestamp);
+
+        lista.appendChild(list_item);
+    }
+
+    risultati.appendChild(lista);
+}
